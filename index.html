@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Méhész Múzeum Szarvas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffcc00; /* Sárga háttérszín */
+            min-height: 100vh; /* Minimum 100% viewport height a lábléc miatt */
+            position: relative; /* Hozzáadott relatív pozíció a lábléc miatt */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        header {
+            background-color: #ff6600; /* Narancssárga háttérszín */
+            color: white;
+            text-align: center;
+            padding: 1em;
+            width: 100%;
+            display: flex;
+            justify-content: space-between; /* Elemek elhelyezése a header-en belül */
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        #logo {
+            cursor: pointer;
+            width: 100px; /* Állítsd be a kívánt szélességet */
+            margin-right: 20px; /* Távolság a szövegtől */
+        }
+
+        nav {
+            background-color: #ff9900; /* Világosabb narancssárga háttérszín */
+            text-align: center;
+            width: 100vw;
+            padding: 1em;
+            
+        }
+
+        nav button {
+            background-color: #ff9900; /* Világosabb narancssárga háttérszín */
+            color: white;
+            border: none;
+            padding: 14px 16px;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 4px 2px;
+        }
+
+        nav button:hover {
+            background-color: #ff6600; /* Narancssárga háttérszín a hover állapotban */
+        }
+
+        section {
+            padding: 20px;
+            margin-bottom: 50px; /* Hozzáadott margó a lábléc miatt */
+            font-size: 18px; /* Szöveg méretének növelése */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        iframe {
+            width: 100%;
+            height: 315px; /* Állítsd be a kívánt magasságot */
+            border: 0;
+        }
+
+        footer {
+            background-color: #ff6600; /* Narancssárga háttérszín */
+            color: white;
+            text-align: center;
+            padding: 0.5em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 16px; /* Szöveg méretének növelése */
+        }
+
+        h1 {
+            text-align: center;
+            flex-direction: center;
+        }
+    </style>
+    <script>
+        function changePage(pageId) {
+            // Az oldal tartalmának módosítása az érték alapján
+            if (pageId === 'kezdolap') {
+                document.getElementById('content').innerHTML = '<h2>Üdvözöljük a Méhész Múzeum Weboldalán!</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/Oers4WSY5WU?si=vQ4rGbV-TAGcXvQc&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+            } else if (pageId === 'kiallitasok') {
+                document.getElementById('content').innerHTML = '<h2>Méhészet</h2><p>Itt leírhatod a méhészet témájú kiállításokat és eseményeket.</p>';
+            } else if (pageId === 'rolunk') {
+                document.getElementById('content').innerHTML = '<h2>Rólunk</h2><p>A szarvasi Szirony családban a méhészkedésnek immár 80 éves múltja van – igaz kisebb-nagyobb megszakításokkal. A hagyományt napjainkban Szirony György viszi tovább, akivel<br>nemcsak a piacon, hanem különféle rendezvényeken, fesztiválokon<br>is találkozhatunk a megye és az ország különböző pontjain.</p><img src="rolunk.jpg" alt="Rólunk kép" style="max-width: 100%; height: auto; margin-top: 20px;">';
+            }else if (pageId === 'kapcsolat') {
+                document.getElementById('content').innerHTML = '<h2>Kapcsolat</h2><p>Elérhetőségek: <br>Telefon: +36 20 224 6081<br>Email: info@meheszmuzeum.hu</p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2727.688178097569!2d20.525659075554803!3d46.86950853858722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4746a92f17b31853%3A0x56369c104c39d3fb!2zQWdyb21ldGVvcm9sw7GnaWFpIMOBbGxvbcOhcyBBZ3LDoXJrYWxhbmQga2nDoWxsw610w6Fz!5e0!3m2!1shu!2shu!4v1700170615812!5m2!1shu!2shu" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
+            }
+        }
+
+        function goToHomePage() {
+            // Kezdőlapra való visszatérés
+            changePage('kezdolap');
+        }
+    </script>
+</head>
+<body>
+
+    <header>
+        <img id="logo" src="logo.png" alt="Méhész Múzeum Szarvas logo" onclick="goToHomePage()">
+        <h1>Méhész Múzeum Szarvas</h1>
+    </header>
+
+    <nav>
+        <button onclick="changePage('kezdolap')">Kezdőlap</button>
+        
+        <button onclick="changePage('rolunk')">Rólunk</button>
+        <button onclick="changePage('kapcsolat')">Kapcsolat</button>
+    </nav>
+
+    <section id="content">
+        <h2>Üdvözöljük a Méhész Múzeum Weboldalán!</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Oers4WSY5WU?si=vQ4rGbV-TAGcXvQc&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Méhész Múzeum Szarvas</p>
+    </footer>
+
+</body>
+</html>
